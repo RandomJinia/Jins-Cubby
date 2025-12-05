@@ -1,0 +1,30 @@
+---
+// Header.astro
+import { profileConfig, navigation } from "../config";
+---
+
+<mainheader
+    class="flex flex-col items-center justify-center text-center min-h-screen"
+>
+    <img
+        src={profileConfig.avatar}
+        alt="头像"
+        class="rounded-full w-40 h-40 mb-4"
+    />
+
+    <p class="text-lg mb-4">{profileConfig.webname}</p>
+    <p class="text-lg mb-4">{profileConfig.bio}</p>
+    <nav class="mb-8">
+        <ul class="flex space-x-4">
+            {
+                navigation.map((item) => (
+                    <li>
+                        <a href={item.href} class="text-lg hover:text-gray-600">
+                            {item.label}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+</mainheader>

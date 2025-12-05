@@ -7,8 +7,12 @@ const { frontmatter } = Astro.props;
     <p>{frontmatter.pubDate.toLocaleDateString()}</p>
     <p><em>{frontmatter.description}</em></p>
     <p>作者：{frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
 
+    {/* 动态判断是否存在 image 字段 */}
+    {frontmatter.image && (
+        <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    )}
+    
     <div class="tags">
         {
             frontmatter.tags.map((tag: string) => (

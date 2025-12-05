@@ -1,10 +1,71 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Greeting from "../components/Greeting";
-const pageTitle = "首页";
+import MainLayout from "../layouts/MainLayout.astro";
+const pageTitle = "Jin's Cubby";
+import BlogCard from "../components/BlogCard.astro";
+import ScrollButton from "../components/ScrollButton.astro";
+
+const recentBlogs = [
+	{
+		title: "博客标题 1",
+		excerpt: "这是一篇博客的摘要...",
+		link: "#",
+		date: "2025-12-01",
+	},
+	{
+		title: "博客标题 2",
+		excerpt: "这是第二篇博客的摘要...",
+		link: "#",
+		date: "2025-11-28",
+	},
+	{
+		title: "博客标题 3",
+		excerpt: "第三篇博客的摘要...",
+		link: "#",
+		date: "2025-11-20",
+	},
+];
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-	<h2>我超棒的博客副标题</h2>
-	<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
-</BaseLayout>
+<MainLayout pageTitle={pageTitle}>
+	<section class="py-16">
+		<h2 class="text-3xl font-semibold mb-12 text-center">最近发布的博客</h2>
+	  
+		<div class="relative max-w-4xl mx-auto px-4">
+		  <!-- 中轴竖线 -->
+		  <div class="absolute left-[110px] top-0 h-full w-px bg-gray-300"></div>
+	  
+		  <div class="flex flex-col gap-12">
+			{
+			  recentBlogs.map((blog) => (
+				<div class="flex items-start gap-8">
+				  
+				  <!-- ✅ 左侧日期 -->
+				  <div class="w-24 text-right text-sm text-gray-500 flex-shrink-0 pt-2">
+					{blog.date}
+				  </div>
+	  
+				  <!-- ✅ 中间圆点 -->
+				  <div class="relative z-10">
+					<div class="w-4 h-4 rounded-full bg-black mt-2"></div>
+				  </div>
+	  
+				  <!-- ✅ 右侧博客卡片 -->
+				  <div class="flex-1">
+					<BlogCard
+					  title={blog.title}
+					  excerpt={blog.excerpt}
+					  link={blog.link}
+					/>
+				  </div>
+	  
+				</div>
+			  ))
+			}
+		  </div>
+		</div>
+	  </section>
+	  
+
+	
+	<ScrollButton link="/blog" />
+</MainLayout>

@@ -1,0 +1,25 @@
+---
+const { children, pageTitle } = Astro.props;
+import Footer from "../components/Footer.astro";
+import MainHeader from "../components/MainHeader.astro";
+---
+
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" />
+        <title>{pageTitle}</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+        />
+    </head>
+    <body class="bg-white">
+        <MainHeader/>
+        <div class="min-h-screen flex flex-col">
+            <main class="flex-grow">
+                <slot />   
+            </main>
+            <Footer />
+        </div>
+    </body>
+</html>

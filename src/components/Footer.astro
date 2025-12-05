@@ -1,17 +1,33 @@
 ---
-import Social from './Social.astro';
+import Social from "./Social.astro";
+const currentYear = new Date().getFullYear();
 ---
 
-<style>
-	footer {
-		display: flex;
-		gap: 1rem;
-		margin-top: 2rem;
-	}
-</style>
+<footer class="bg-gray-100 mt-24 py-10">
+	<div class="max-w-5xl mx-auto flex flex-col items-center gap-6">
+		<!-- ✅ 社交图标区域 -->
+		<div class="flex gap-6">
+			<Social platform="twitter" username="astrodotbuild" />
+			<Social platform="github" username="withastro" />
+			<Social platform="youtube" username="astrodotbuild" />
+		</div>
 
-<footer>
-    <Social platform="twitter" username="astrodotbuild" />
-	<Social platform="github" username="withastro" />
-	<Social platform="youtube" username="astrodotbuild" />
+		<!-- ✅ 分割线 -->
+		<div class="w-40 h-px bg-gray-300"></div>
+
+		<!-- ✅ 开源协议信息 -->
+		<div class="text-sm text-gray-500 text-center leading-relaxed">
+			<p>© {currentYear} Jin's Cubby. All rights reserved.</p>
+			<p>
+				Content licensed under
+				<a
+					href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+					target="_blank"
+					class="underline hover:text-gray-700"
+				>
+					CC BY-NC-SA 4.0
+				</a>
+			</p>
+		</div>
+	</div>
 </footer>
